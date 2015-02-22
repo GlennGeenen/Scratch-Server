@@ -16,13 +16,11 @@
 
     function handleRequest(req, res) {
 
-        var URL = url.parse(req.url);
-
         var l = 0;
         var i = 0;
         var value = 0;
 
-        if (URL.pathname === '/poll') {
+        if (req.url === '/poll') {
             var response = '';
             l = otherProperties.length;
             for (; i < l; ++i) {
@@ -30,11 +28,11 @@
             }
             res.setHeader('Content-Type', 'text/plain; charset=utf-8');
             res.end(response);
-        } else if (URL.pathname.indexOf('other') !== -1) {
+        } else if (req.url.indexOf('other') !== -1) {
             l = otherProperties.length;
             for (; i < l; ++i) {
-                if (URL.pathname.indexOf(otherProperties[i]) !== -1) {
-                    value = URL.pathname.substring(URL.pathname.lastIndexOf('/'));
+                if (req.url.indexOf(otherProperties[i]) !== -1) {
+                    value = req.url.substring(req.url.lastIndexOf('/') + 1);
                     otherValues[i] = value;
                     break;
                 }
@@ -43,10 +41,10 @@
         } else {
             l = myProperties.length;
             for (; i < l; ++i) {
-                if (URL.pathname.indexOf(myProperties[i]) !== -1) {
-                    value = URL.pathname.substring(URL.pathname.lastIndexOf('/'));
+                if (req.url.indexOf(myProperties[i]) !== -1) {
+                    value = req.url.substring(req.url.lastIndexOf('/') + 1);
                     myValues[i] = value;
-                    sendRequest(myProperties[i], value);
+                    sendRequest(otherProperties[i], value);
                     break;
                 }
             }

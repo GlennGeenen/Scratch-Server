@@ -2,8 +2,8 @@
     "extensionName": "Scratch Multiplayer",
     "extensionPort": 4440,
     "blockSpecs": [
-        [" ", "My X", "my_x"],
-        [" ", "My Y", "my_y"],
+        [" ", "My X is %n", "my_x"],
+        [" ", "My Y is %n", "my_y"],
         ["r", "Enemy X", "other_x"],
         ["r", "Enemy Y", "other_y"]
     ]

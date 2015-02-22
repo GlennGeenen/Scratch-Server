@@ -46,18 +46,24 @@
                 if (URL.pathname.indexOf(myProperties[i]) !== -1) {
                     value = URL.pathname.substring(URL.pathname.lastIndexOf('/'));
                     myValues[i] = value;
-                    var options = {
-                        hostname: otherIp,
-                        port: port,
-                        path: '/other/' + myProperties[i] + '/' + value,
-                        method: 'POST'
-                    };
-                    http.request(options);
+                    sendRequest(myProperties[i], value);
                     break;
                 }
             }
             res.end();
         }
+    }
+
+    function sendRequest(property, value) {
+        var options = {
+            host: otherIp,
+            port: port,
+            path: '/other/' + property + '/' + value
+        };
+
+        http.get(options).on('error', function (e) {
+            console.log("Error: " + e.message);
+        });
     }
 
     function start() {

@@ -61,7 +61,7 @@
     }
 
     function start() {
-        var server = http.createServer(handleRequest).listen(port);
+        http.createServer(handleRequest).listen(port);
     }
 
     function addMyProperty(prop) {
@@ -88,8 +88,7 @@
                 var extension = JSON.parse(fileContents);
                 setPort(extension.extensionPort);
                 for (var i = 0; i < extension.blockSpecs.length; ++i) {
-
-                    var prop = extension[i];
+                    var prop = extension.blockSpecs[i];
                     if (prop[0] === ' ') {
                         addMyProperty(prop[2]);
                     } else {

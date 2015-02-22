@@ -1,13 +1,13 @@
 # Scratch-Server
 Scratch Multiplayer Server in node.js
 
-http-extension is only support in scratch 2 offline editor.
+http-extension is only supported in scratch 2 offline editor.
 
 # Scratch
 
-Load the extension by holding shift and pressing File -> Import experimental HTTP extension.
+Load the extension.json by holding shift and pressing File -> Import experimental HTTP extension.
 
-You need to set the variable player on 1 or 2 (the opposite of the other player).
+You need to set the variable player on 1 or 2 (the opposite of the other player). This variable is set in the stage.
 
 # node server
 

@@ -62,6 +62,7 @@
 
     function start() {
         http.createServer(handleRequest).listen(port);
+        console.log('Server running at http://localhost:' + port);
     }
 
     function addMyProperty(prop) {
@@ -95,6 +96,7 @@
                         addOtherProperty(prop[2]);
                     }
                 }
+                next();
             }
         });
     }
